@@ -1,0 +1,12 @@
+// tsconfiracao para o typescript
+
+{
+  "compilerOptions": {
+    "target": "es6",
+    "outDir": "app/js",
+    "noEmitOnError": true
+  },
+  "include": [
+    "app/ts/**/*"
+  ]
+}
