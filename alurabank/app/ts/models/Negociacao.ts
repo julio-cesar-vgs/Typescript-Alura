@@ -1,32 +1,24 @@
 class Negociacao {
+  //atributos direto no constuctor, nao ha atributos devido a tipagem do typescritp
+  constructor(
+    private _data: Date,
+    private _quantidade: number,
+    private _valor: number
+  ) {}
 
+  get data() {
+    return this._data;
+  }
 
-    constructor(data, quantidade, valor) {
-        this._data = data;
-        this._quantidade = quantidade;
-        this._valor = valor;
-    }
+  get quantidade() {
+    return this._quantidade;
+  }
 
-    private _data;
+  get valor() {
+    return this._valor;
+  }
 
-    get data() {
-        return this._data;
-    }
-
-    private _quantidade;
-
-    get quantidade() {
-        return this._quantidade;
-    }
-
-    private _valor;
-
-    get valor() {
-        return this._valor;
-    }
-
-
-    get volume() {
-        return this._quantidade * this._valor;
-    }
+  get volume() {
+    return this._quantidade * this._valor;
+  }
 }
