@@ -8,8 +8,8 @@ class Negociacoes {
     }
 
     // pega os dados do array
-    paraArray() {
-        return this._negociacoes;
+    paraArray(): Negociacao[] {
+        return [].concat(this._negociacoes);
     }
 
 }
