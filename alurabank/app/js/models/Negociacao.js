@@ -1,5 +1,4 @@
 class Negociacao {
-    //atributos direto no constuctor, nao ha atributos devido a tipagem do typescritp
     constructor(_data, _quantidade, _valor) {
         this._data = _data;
         this._quantidade = _quantidade;
