@@ -1,4 +1,4 @@
-class Negociacao {
+export class Negociacao {
   //atributos direto no constuctor, nao ha atributos devido a tipagem do typescritp
   constructor(
     private _data: Date,
