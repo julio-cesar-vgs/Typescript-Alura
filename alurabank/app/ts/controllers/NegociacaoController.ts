@@ -1,5 +1,5 @@
 import { NegociacoesView, MensagemView } from "../views/index";
-import { Negociacao, Negociacao } from "../models/index";
+import { Negociacao, Negociacoes} from "../models/index";
 
 //declaracao de classe
 export class NegociacaoController {
