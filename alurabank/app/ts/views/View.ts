@@ -4,7 +4,7 @@ export abstract class View<T> {
     private _escapar: boolean;
 
     // aonde vamos passar por parametro os itens para carregar o seletor.
-    constructor(seletor: string, escapar?: boolean) {
+    constructor(seletor: string, escapar: boolean = false) {
         this._elemento = $(seletor);
         this._escapar = escapar;
     }
