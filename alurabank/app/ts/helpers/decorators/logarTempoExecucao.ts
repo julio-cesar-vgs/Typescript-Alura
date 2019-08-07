@@ -1,5 +1,4 @@
-export function logarTempoDeExecucao() {
-
+export function logarTempoExecucao() {
 
     return function (
         target: any,

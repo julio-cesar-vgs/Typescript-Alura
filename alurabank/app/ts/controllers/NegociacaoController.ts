@@ -1,6 +1,6 @@
 import { NegociacoesView, MensagemView } from "../views/index";
 import { Negociacao, Negociacoes } from "../models/index";
-
+import {logarTempoExecucao} from '../helpers/decorators/logarTempoExecucao'
 //declaracao de classe
 export class NegociacaoController {
   private _inputData: JQuery;
@@ -23,10 +23,8 @@ export class NegociacaoController {
   /* metodo que adicioa um item
   * abaixo é colocado os tipos de cada item do typescript, facilitando o uso dos itens.
   */
-  @logarTempoDeExecucao()
+  @logarTempoExecucao()
   adiciona(event: Event): void {
-
-    const t1 = performance.now();
 
     event.preventDefault();
 
@@ -46,14 +44,6 @@ export class NegociacaoController {
     this._negociacoes.adiciona(negociacao);
     this._negociacoesView.update(this._negociacoes);
     this._mensagemView.update('Negociação adicionada com sucesso');
-
-    const t2 = performance.now();
-    console.log(`Tempo de execução do método adiciona(): ${(t2 - t1) / 1000} segundos`);
-    console.log(t1);
-    console.log(t2);
-
-
-
   }
 
   private _ehDiaUtil(data: Date): boolean {

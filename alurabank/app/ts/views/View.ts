@@ -1,3 +1,5 @@
+import {logarTempoExecucao} from '../helpers/decorators/logarTempoExecucao'
+
 export abstract class View<T> {
 
     protected _elemento: JQuery;
