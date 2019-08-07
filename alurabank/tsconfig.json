@@ -8,7 +8,8 @@
     "noImplicitAny": true,
     "removeComments": true,
     "module": "system",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "experimentalDecorators": true
   },
   "include": ["app/ts/**/*"]
 }

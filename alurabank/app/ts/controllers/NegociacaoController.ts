@@ -23,6 +23,7 @@ export class NegociacaoController {
   /* metodo que adicioa um item
   * abaixo é colocado os tipos de cada item do typescript, facilitando o uso dos itens.
   */
+  @logarTempoDeExecucao()
   adiciona(event: Event): void {
 
     const t1 = performance.now();
@@ -47,12 +48,12 @@ export class NegociacaoController {
     this._mensagemView.update('Negociação adicionada com sucesso');
 
     const t2 = performance.now();
-    console.log(`Tempo de execução do método adiciona(): ${(t2 - t1)/1000} segundos`);
+    console.log(`Tempo de execução do método adiciona(): ${(t2 - t1) / 1000} segundos`);
     console.log(t1);
     console.log(t2);
-    
-    
-    
+
+
+
   }
 
   private _ehDiaUtil(data: Date): boolean {
