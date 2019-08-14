@@ -1,14 +1,22 @@
-export function logarTempoExecucao() {
+export function  logarTempoExecucao() {
 
     return function (
         target: any,
-        propertKey: string,
+        propertyKey: string,
         descriptor: PropertyDescriptor) {
         // é o metodo que sera posicionado
         const metodoOriginal = descriptor.value
 
         descriptor.value = function (...args: any[]) {
-            return metodoOriginal.apply(this, args);
+            console.log('-----------------------')
+                console.log(`Parâmetros do método ${propertyKey}: ${JSON.stringify(args)}`);
+                const t1 = performance.now();
+                const resultado = metodoOriginal.apply(this, args);
+                console.log(`Resultado do método: ${JSON.stringify(resultado)}` )
+                const t2 = performance.now();
+                console.log(`${propertyKey} demorou ${t2 - t1} ms`);
+                console.log('-----------------------')
+                return resultado;
         }
         return descriptor;
     }

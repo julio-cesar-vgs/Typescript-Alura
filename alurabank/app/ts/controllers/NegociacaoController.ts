@@ -1,10 +1,14 @@
 import { NegociacoesView, MensagemView } from "../views/index";
 import { Negociacao, Negociacoes } from "../models/index";
 import {logarTempoExecucao} from '../helpers/decorators/logarTempoExecucao'
+import {domInject}from '../helpers/decorators/domInject'
 //declaracao de classe
 export class NegociacaoController {
+  @domInject('#data')
   private _inputData: JQuery;
+  @domInject('#quantidade')
   private _inputQuantidade: JQuery;
+  @domInject('#valor')
   private _inputValor: JQuery;
   private _negociacoes = new Negociacoes();
   private _negociacoesView = new NegociacoesView('#negociacoesView', true);
@@ -14,10 +18,7 @@ export class NegociacaoController {
    * <HTMLInputElement> faz um casting de variavel nos itens. 
    */
   constructor() {
-    this._inputData = $('#data');
-    this._inputQuantidade = $("#quantidade");
-    this._inputValor = $('#valor');
-    this._negociacoesView.update(this._negociacoes);
+   
   }
 
   /* metodo que adicioa um item
