@@ -1,5 +1,5 @@
 import { NegociacoesView, MensagemView } from "../views/index";
-import { Negociacao, Negociacoes } from "../models/index";
+import { Negociacao, Negociacoes, NegociacaoParcial } from "../models/index";
 import { logarTempoExecucao } from '../helpers/decorators/logarTempoExecucao'
 import { domInject } from '../helpers/decorators/domInject'
 //declaracao de classe
@@ -51,6 +51,8 @@ export class NegociacaoController {
     return data.getDay() != DiaDaSemana.Sabado || data.getDay() != DiaDaSemana.Domingo;
   }
 
+
+  // funcao para importar os dados da tabela
   impotaDados() {
     function isOk(res: Response) {
       if (res.ok) {
@@ -62,7 +64,7 @@ export class NegociacaoController {
     fetch('http://localhost:8080/dados')
       .then(res => isOk(res))
       .then(res => res.json())
-      .then((dados: any[]) => {
+      .then((dados: NegociacaoParcial[]) => {
         dados
           .map(dado => new Negociacao(new Date(), dado.vezes, dado.montante))
           .forEach(negociacao => this._negociacoes.adiciona(negociacao));
