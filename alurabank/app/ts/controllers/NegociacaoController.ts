@@ -1,7 +1,7 @@
 import { NegociacoesView, MensagemView } from "../views/index";
 import { Negociacao, Negociacoes } from "../models/index";
-import {logarTempoExecucao} from '../helpers/decorators/logarTempoExecucao'
-import {domInject}from '../helpers/decorators/domInject'
+import { logarTempoExecucao } from '../helpers/decorators/logarTempoExecucao'
+import { domInject } from '../helpers/decorators/domInject'
 //declaracao de classe
 export class NegociacaoController {
   @domInject('#data')
@@ -18,7 +18,7 @@ export class NegociacaoController {
    * <HTMLInputElement> faz um casting de variavel nos itens. 
    */
   constructor() {
-   
+
   }
 
   /* metodo que adicioa um item
@@ -51,8 +51,24 @@ export class NegociacaoController {
     return data.getDay() != DiaDaSemana.Sabado || data.getDay() != DiaDaSemana.Domingo;
   }
 
-  impotaDados(){
-    alert('oi')
+  impotaDados() {
+    function isOk(res: Response) {
+      if (res.ok) {
+        return res;
+      } else {
+        throw new Error('res.statusText')
+      }
+    }
+    fetch('http://localhost:8080/dados')
+      .then(res => isOk(res))
+      .then(res => res.json())
+      .then((dados: any[]) => {
+        dados
+          .map(dado => new Negociacao(new Date(), dado.vezes, dado.montante))
+          .forEach(negociacao => this._negociacoes.adiciona(negociacao));
+          this._negociacoesView.update(this._negociacoes);
+      })
+      .catch(err => console.log(err));
   }
 }
 
